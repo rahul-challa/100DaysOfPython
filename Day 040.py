@@ -14,29 +14,38 @@
 
 # Your program should ask whether you want to code or decode
 '''
-
+# Function to encrypt
 def code(message):
+    print("the coded message is:\n")
     if (len(message) >= 3):
         print(frontRandomLetters + message[1:] + message[0] + backRandomLetters)
     else:
         print(message[::-1])
 
+# Function to decrypt
 def decode(message):
-    if (len(message) > 3):
+    print("the decoded message is:\n")
+    if (len(message) < 3):
         print(message[::-1])
     else:
-        print(message[-4] + message[3:-4])
+        step1 = message[3:len(message)-3]
+        step2 = step1[-1] + step1[0:-1]
+        print(step2)
 
 print("--------------------------------------------------------------------------------------------")
-message = (input("Enter your Message here: "))
+message = (input("Enter your Message here: \n"))
 print(f"the message you entered is: \"{message}\"\n")
-print("Enter \"code\" to code this message.\n")
-print("Enter \"decode\" to decode this message.\n")
+print("--------------------------------------------------------------------------------------------")
+print("Enter \"code\" to code this message.")
+print("Enter \"decode\" to decode this message.")
+print("--------------------------------------------------------------------------------------------")
 choice = input("Enter your choice: \n")
+print("--------------------------------------------------------------------------------------------")
 frontRandomLetters = "isd"
 backRandomLetters = "ner"
 
-if(choice == "code"):
-    print(code(message))
-elif(choice == "decode"):
-    print(code(message))
+if __name__ == '__main__':
+    if(choice == "code"):
+        code(message)
+    elif(choice == "decode"):
+        decode(message)
